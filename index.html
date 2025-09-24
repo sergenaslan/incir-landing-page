@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğal Lezzet - Premium İncir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B4513;
+            --secondary: #F5DEB3;
+            --accent: #556B2F;
+            --light: #FFF8DC;
+            --dark: #654321;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Product Section */
+        .product-section {
+            padding: 60px 0;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .product-wrapper {
+            display: flex;
+            gap: 50px;
+            position: relative;
+        }
+        
+        .product-images {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-info {
+            flex: 0.8;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            padding: 30px;
+            background-color: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .product-info h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .product-info p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features-list li i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+            font-size: 36px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .benefits-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .benefits-text {
+            flex: 1;
+        }
+        
+        .benefits-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .benefits-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .product-wrapper {
+                flex-direction: column;
+            }
+            
+            .product-info {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .benefits-content {
+                flex-direction: column;
+            }
+            
+            .product-info h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="product-images">
+                    <div class="product-image">
+                        <img src="https://ideacdn.net/idea/fo/65/myassets/products/793/38dfe7c0-1a9a-4972-a781-037bd1fd4070.jpeg?revision=1739391153" alt="Taze Aydın İnciri">
+                    </div>
+                    <div class="product-image">
+                        <img src="https://productimages.hepsiburada.net/s/27/375-375/10212058398770.jpg" alt="Organik İncir Paketi">
+                    </div>
+                    <div class="product-image">
+                        <img src="https://cdn.myikas.com/images/43925886-989b-4aed-9384-5a5fed37a005/772db588-e7e3-4edf-8724-9be73409d11a/3840/kuru-incir-1.webp" alt="İncir Bahçesi">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2>Doğal Lezzetin En Güzel Hali</h2>
+                    <p>Ege'nin verimli topraklarında, güneşin sıcaklığıyla olgunlaşan Aydın incirleri, tamamen doğal yöntemlerle yetiştirilir. Hiçbir kimyasal ilaç veya katkı maddesi içermez.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> %100 Organik ve Doğal</li>
+                        <li><i class="fas fa-check"></i> Taze ve Lezzetli</li>
+                        <li><i class="fas fa-check"></i> Vitamin ve Mineral Deposu</li>
+                        <li><i class="fas fa-check"></i> Aynı Gün Kargo</li>
+                        <li><i class="fas fa-check"></i> Ücretsiz Kargo (100 TL üzeri)</li>
+                        <li><i class="fas fa-check"></i> Kalite Garantisi</li>
+                    </ul>
+                    
+                    <div class="price">₺85/kg</div>
+                    <a href="#siparis" class="btn btn-large">Hemen Sipariş Ver</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Neden Bizim İncirlerimiz?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Organik Tarım</h3>
+                    <p>İncirlerimiz hiçbir kimyasal ilaç veya gübre kullanılmadan, doğal yöntemlerle yetiştirilir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Kalite</h3>
+                    <p>En kaliteli incir çeşitlerini titizlikle seçiyor, müşterilerimize en iyi deneyimi sunuyoruz.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Hızlı Teslimat</h3>
+                    <p>Siparişleriniz aynı gün kargolanır, tazeliğini koruyarak kapınıza kadar gelir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">İncirin Sağlığa Faydaları</h2>
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <p>İncir, sağlık açısından birçok faydaya sahip süper bir besindir. İşte düzenli incir tüketiminin başlıca faydaları:</p>
+                    
+                    <ul class="benefits-list">
+                        <li>Sindirim sistemini düzenler ve kabızlığı önler</li>
+                        <li>Yüksek lif içeriği sayesinde tokluk hissi verir</li>
+                        <li>Kemik sağlığını koruyan kalsiyum açısından zengindir</li>
+                        <li>Antioksidan özelliği ile bağışıklık sistemini güçlendirir</li>
+                        <li>Kan basıncını düzenlemeye yardımcı olur</li>
+                        <li>Enerji verici özelliği ile gün boyu zindelik sağlar</li>
+                    </ul>
+                    
+                    <p>Günde birkaç adet incir tüketerek bu faydalardan yararlanabilirsiniz.</p>
+                </div>
+                <div class="benefits-image">
+                    <img src="https://images.unsplash.com/photo-1570193577973-6e92783c15b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="İncirin Faydaları">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="siparis">
+        <div class="container">
+            <h2>Lezzetli İncirlerimizi Deneyin!</h2>
+            <p>Hemen sipariş verin, doğanın en tatlı hediyesi kapınıza gelsin. İlk siparişinize özel %10 indirim fırsatını kaçırmayın!</p>
+            <a href="#" class="btn btn-large">Hemen Sipariş Ver</a>
+        </div>
+    </section>
+</body>
+</html>
